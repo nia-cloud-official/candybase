@@ -1,0 +1,329 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280">
+  <defs>
+
+    <!-- Deep dark base gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#0D0D0F"/>
+      <stop offset="50%"  stop-color="#12100E"/>
+      <stop offset="100%" stop-color="#0A0C10"/>
+    </linearGradient>
+
+    <!-- Rust/ember radial glow — left anchor -->
+    <radialGradient id="glowLeft" cx="22%" cy="55%" r="45%">
+      <stop offset="0%"   stop-color="#C0390A" stop-opacity="0.45"/>
+      <stop offset="60%"  stop-color="#8B1A00" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0D0D0F" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Amber accent glow — right -->
+    <radialGradient id="glowRight" cx="82%" cy="40%" r="38%">
+      <stop offset="0%"   stop-color="#E8820C" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#0D0D0F" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Cool blue ghost — top center -->
+    <radialGradient id="glowCenter" cx="52%" cy="15%" r="35%">
+      <stop offset="0%"   stop-color="#3A7BD5" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0D0D0F" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Candy stripe gradient for the icon -->
+    <linearGradient id="candyStripe" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FF6B35"/>
+      <stop offset="35%"  stop-color="#FF3D5C"/>
+      <stop offset="70%"  stop-color="#C0390A"/>
+      <stop offset="100%" stop-color="#FF8C42"/>
+    </linearGradient>
+
+    <!-- Shine on candy -->
+    <linearGradient id="candyShine" x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Title text gradient -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#FF8C42"/>
+      <stop offset="40%"  stop-color="#FF5722"/>
+      <stop offset="100%" stop-color="#FFCC80"/>
+    </linearGradient>
+
+    <!-- Tagline gradient -->
+    <linearGradient id="tagGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  stop-color="#A0AEC0"/>
+      <stop offset="100%" stop-color="#718096"/>
+    </linearGradient>
+
+    <!-- Badge pill gradient -->
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1E1A16"/>
+      <stop offset="100%" stop-color="#161210"/>
+    </linearGradient>
+
+    <!-- Rust logo gradient -->
+    <linearGradient id="rustGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#CE412B"/>
+      <stop offset="100%" stop-color="#A72B1A"/>
+    </linearGradient>
+
+    <!-- Grid line fade -->
+    <linearGradient id="gridFade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#FF5722" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#FF5722" stop-opacity="0.12"/>
+      <stop offset="70%"  stop-color="#FF5722" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FF5722" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Vertical grid fade -->
+    <linearGradient id="gridFadeV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#FF5722" stop-opacity="0"/>
+      <stop offset="40%"  stop-color="#FF5722" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FF5722" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Noise filter for texture -->
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="overlay" result="blended"/>
+      <feComposite in="blended" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Soft blur for glow layers -->
+    <filter id="softBlur">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+
+    <!-- Icon glow -->
+    <filter id="iconGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Text glow -->
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Clip the whole banner -->
+    <clipPath id="bannerClip">
+      <rect width="900" height="280" rx="16"/>
+    </clipPath>
+
+  </defs>
+
+  <!-- ── BACKGROUND LAYERS ─────────────────────────────────────────────────── -->
+  <g clip-path="url(#bannerClip)">
+
+    <!-- Base -->
+    <rect width="900" height="280" fill="url(#bgGrad)"/>
+
+    <!-- Atmospheric glows -->
+    <rect width="900" height="280" fill="url(#glowLeft)"/>
+    <rect width="900" height="280" fill="url(#glowRight)"/>
+    <rect width="900" height="280" fill="url(#glowCenter)"/>
+
+    <!-- Perspective grid — horizontal lines -->
+    <g opacity="1">
+      <line x1="0" y1="100" x2="900" y2="100" stroke="url(#gridFade)" stroke-width="0.5"/>
+      <line x1="0" y1="130" x2="900" y2="130" stroke="url(#gridFade)" stroke-width="0.5"/>
+      <line x1="0" y1="160" x2="900" y2="160" stroke="url(#gridFade)" stroke-width="0.5"/>
+      <line x1="0" y1="190" x2="900" y2="190" stroke="url(#gridFade)" stroke-width="0.4"/>
+      <line x1="0" y1="220" x2="900" y2="220" stroke="url(#gridFade)" stroke-width="0.3"/>
+      <line x1="0" y1="250" x2="900" y2="250" stroke="url(#gridFade)" stroke-width="0.2"/>
+    </g>
+
+    <!-- Vertical grid lines -->
+    <g opacity="1">
+      <line x1="150" y1="0" x2="150" y2="280" stroke="url(#gridFadeV)" stroke-width="0.5"/>
+      <line x1="300" y1="0" x2="300" y2="280" stroke="url(#gridFadeV)" stroke-width="0.5"/>
+      <line x1="450" y1="0" x2="450" y2="280" stroke="url(#gridFadeV)" stroke-width="0.4"/>
+      <line x1="600" y1="0" x2="600" y2="280" stroke="url(#gridFadeV)" stroke-width="0.5"/>
+      <line x1="750" y1="0" x2="750" y2="280" stroke="url(#gridFadeV)" stroke-width="0.5"/>
+    </g>
+
+    <!-- Noise texture overlay -->
+    <rect width="900" height="280" fill="#FF5722" opacity="0.015" filter="url(#noise)"/>
+
+    <!-- Top highlight streak -->
+    <rect x="0" y="0" width="900" height="1.5" fill="url(#gridFade)" opacity="0.6"/>
+
+    <!-- Bottom edge glow line -->
+    <rect x="0" y="277" width="900" height="1.5" fill="url(#gridFade)" opacity="0.3"/>
+
+    <!-- Decorative diagonal slash — far right -->
+    <line x1="760" y1="0" x2="900" y2="200" stroke="#FF5722" stroke-width="0.6" opacity="0.1"/>
+    <line x1="800" y1="0" x2="900" y2="140" stroke="#FF8C42" stroke-width="0.4" opacity="0.07"/>
+
+    <!-- Corner accent dot cluster — top left -->
+    <circle cx="28" cy="28" r="1.5" fill="#FF5722" opacity="0.5"/>
+    <circle cx="38" cy="28" r="1"   fill="#FF5722" opacity="0.3"/>
+    <circle cx="28" cy="38" r="1"   fill="#FF5722" opacity="0.3"/>
+    <circle cx="48" cy="28" r="0.7" fill="#FF8C42" opacity="0.2"/>
+
+    <!-- Corner accent dot cluster — bottom right -->
+    <circle cx="872" cy="252" r="1.5" fill="#FF5722" opacity="0.4"/>
+    <circle cx="862" cy="252" r="1"   fill="#FF5722" opacity="0.25"/>
+    <circle cx="872" cy="242" r="1"   fill="#FF5722" opacity="0.25"/>
+
+    <!-- ── CANDY ICON ───────────────────────────────────────────────────────── -->
+    <!-- Outer glow ring -->
+    <circle cx="116" cy="140" r="66" fill="none" stroke="#FF5722" stroke-width="1" opacity="0.12"/>
+    <circle cx="116" cy="140" r="58" fill="none" stroke="#FF5722" stroke-width="0.6" opacity="0.08"/>
+
+    <!-- Icon background disc -->
+    <circle cx="116" cy="140" r="52" fill="#1A0E08" opacity="0.9"/>
+    <circle cx="116" cy="140" r="52" fill="#FF5722" opacity="0.06"/>
+
+    <!-- Candy body — lollipop shape -->
+    <!-- Main circle -->
+    <circle cx="116" cy="126" r="32" fill="url(#candyStripe)" filter="url(#iconGlow)"/>
+
+    <!-- Spiral stripe overlay on candy -->
+    <circle cx="116" cy="126" r="32" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-dasharray="12 8" stroke-dashoffset="4" opacity="0.18" transform="rotate(-30, 116, 126)"/>
+    <circle cx="116" cy="126" r="22" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-dasharray="9 6" stroke-dashoffset="0" opacity="0.14" transform="rotate(20, 116, 126)"/>
+    <circle cx="116" cy="126" r="12" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6 5" opacity="0.12" transform="rotate(-10, 116, 126)"/>
+
+    <!-- Shine highlight -->
+    <ellipse cx="107" cy="117" rx="10" ry="7" fill="url(#candyShine)" transform="rotate(-25, 107, 117)"/>
+
+    <!-- Stick -->
+    <rect x="112" y="154" width="8" height="34" rx="4" fill="#C8A882" opacity="0.9"/>
+    <rect x="113.5" y="155" width="2.5" height="32" rx="1.5" fill="#E8C9A0" opacity="0.5"/>
+
+    <!-- ── MAIN TEXT CONTENT ────────────────────────────────────────────────── -->
+
+    <!-- "candy" — wordmark, kept within left zone (panel starts at x=556) -->
+    <text
+      x="198" y="133"
+      font-family="'Georgia', 'Times New Roman', serif"
+      font-size="76"
+      font-weight="700"
+      font-style="italic"
+      letter-spacing="-2"
+      fill="url(#titleGrad)"
+      filter="url(#textGlow)"
+    >candybase</text>
+
+    <!-- Underscore accent line — capped well before panel -->
+    <rect x="198" y="145" width="318" height="2.5" rx="1.5" fill="url(#titleGrad)" opacity="0.35"/>
+
+    <!-- Tagline — sits clearly below accent line -->
+    <text
+      x="200" y="168"
+      font-family="'Courier New', 'Lucida Console', monospace"
+      font-size="13"
+      letter-spacing="0.8"
+      fill="url(#tagGrad)"
+    >Procedural database access for Rust</text>
+
+    <!-- ── BADGE ROW — below tagline, all within left zone ──────────────── -->
+    <!-- Badge 1: SQLite -->
+    <g transform="translate(200, 188)">
+      <rect width="74" height="24" rx="5" fill="url(#badgeGrad)"/>
+      <rect width="74" height="24" rx="5" fill="none" stroke="#2D2420" stroke-width="1"/>
+      <rect width="6" height="24" rx="3" fill="#27AE60" opacity="0.85"/>
+      <rect x="3" width="3" height="24" fill="#27AE60" opacity="0.85"/>
+      <text x="14" y="16" font-family="'Courier New', monospace" font-size="11" fill="#7EC8A0" letter-spacing="0.3">SQLite</text>
+    </g>
+
+    <!-- Badge 2: MySQL -->
+    <g transform="translate(282, 188)">
+      <rect width="68" height="24" rx="5" fill="url(#badgeGrad)"/>
+      <rect width="68" height="24" rx="5" fill="none" stroke="#2D2420" stroke-width="1"/>
+      <rect width="6" height="24" rx="3" fill="#3498DB" opacity="0.85"/>
+      <rect x="3" width="3" height="24" fill="#3498DB" opacity="0.85"/>
+      <text x="14" y="16" font-family="'Courier New', monospace" font-size="11" fill="#7EC3E8" letter-spacing="0.3">MySQL</text>
+    </g>
+
+    <!-- Badge 3: Postgres -->
+    <g transform="translate(358, 188)">
+      <rect width="88" height="24" rx="5" fill="url(#badgeGrad)"/>
+      <rect width="88" height="24" rx="5" fill="none" stroke="#2D2420" stroke-width="1"/>
+      <rect width="6" height="24" rx="3" fill="#4B7BEC" opacity="0.85"/>
+      <rect x="3" width="3" height="24" fill="#4B7BEC" opacity="0.85"/>
+      <text x="14" y="16" font-family="'Courier New', monospace" font-size="11" fill="#8BA7F5" letter-spacing="0.3">Postgres</text>
+    </g>
+
+    <!-- Subtle divider between left zone and right panel -->
+    <line x1="544" y1="44" x2="544" y2="236" stroke="#FF5722" stroke-width="0.8" opacity="0.13"/>
+
+    <!-- RIGHT PANEL - Code snippet, shifted right to x=558 -->
+    <!-- Panel background -->
+    <rect x="558" y="32" width="314" height="216" rx="10" fill="#0F0B09" opacity="0.92"/>
+    <rect x="558" y="32" width="314" height="216" rx="10" fill="none" stroke="#2A1F18" stroke-width="1.2"/>
+
+    <!-- Panel top bar -->
+    <rect x="558" y="32" width="314" height="32" rx="10" fill="#1A1109"/>
+    <rect x="558" y="52" width="314" height="12" fill="#1A1109"/>
+
+    <!-- Traffic light dots -->
+    <circle cx="579" cy="48" r="5.5" fill="#FF5F57" opacity="0.9"/>
+    <circle cx="595" cy="48" r="5.5" fill="#FEBC2E" opacity="0.9"/>
+    <circle cx="611" cy="48" r="5.5" fill="#28C840" opacity="0.9"/>
+
+    <!-- File label -->
+    <text x="636" y="53" font-family="'Courier New', monospace" font-size="10.5" fill="#5A4535" letter-spacing="0.5">main.rs</text>
+
+    <!-- Code lines -->
+    <text x="576" y="88" font-family="'Courier New', monospace" font-size="11.5">
+      <tspan fill="#C792EA">use </tspan><tspan fill="#82AAFF">candybase</tspan><tspan fill="#89DDFF">::</tspan><tspan fill="#FFCB6B">*</tspan><tspan fill="#89DDFF">;</tspan>
+    </text>
+
+    <text x="576" y="112" font-family="'Courier New', monospace" font-size="11.5" fill="#3D2E22"> </text>
+
+    <text x="576" y="130" font-family="'Courier New', monospace" font-size="11.5">
+      <tspan fill="#89DDFF">let </tspan><tspan fill="#EEFFFF">conn </tspan><tspan fill="#89DDFF">= </tspan><tspan fill="#82AAFF">candy_connect</tspan><tspan fill="#89DDFF">(</tspan><tspan fill="#C3E88D">"db"</tspan><tspan fill="#89DDFF">)</tspan><tspan fill="#FF5370">?</tspan><tspan fill="#89DDFF">;</tspan>
+    </text>
+
+    <text x="576" y="150" font-family="'Courier New', monospace" font-size="11.5">
+      <tspan fill="#89DDFF">let </tspan><tspan fill="#EEFFFF">res  </tspan><tspan fill="#89DDFF">= </tspan><tspan fill="#82AAFF">candy_query</tspan><tspan fill="#89DDFF">(</tspan><tspan fill="#C3E88D">"SELECT *"</tspan><tspan fill="#89DDFF">)</tspan><tspan fill="#FF5370">?</tspan><tspan fill="#89DDFF">;</tspan>
+    </text>
+
+    <text x="576" y="170" font-family="'Courier New', monospace" font-size="11.5">
+      <tspan fill="#89DDFF">let </tspan><tspan fill="#EEFFFF">rows </tspan><tspan fill="#89DDFF">= </tspan><tspan fill="#82AAFF">candy_fetch_all</tspan><tspan fill="#89DDFF">(</tspan><tspan fill="#EEFFFF">res</tspan><tspan fill="#89DDFF">)</tspan><tspan fill="#FF5370">?</tspan><tspan fill="#89DDFF">;</tspan>
+    </text>
+
+    <text x="576" y="206" font-family="'Courier New', monospace" font-size="11.5">
+      <tspan fill="#82AAFF">candy_close</tspan><tspan fill="#89DDFF">(</tspan><tspan fill="#EEFFFF">conn</tspan><tspan fill="#89DDFF">)</tspan><tspan fill="#FF5370">?</tspan><tspan fill="#89DDFF">;</tspan>
+    </text>
+
+    <!-- Left accent bar on panel -->
+    <rect x="558" y="32" width="3.5" height="216" rx="10" fill="#FF5722" opacity="0.55"/>
+
+    <!-- ── RUST LOGO WATERMARK — bottom right ──────────────────────────────── -->
+    <g transform="translate(832, 238)" opacity="0.3">
+      <!-- Simplified Rust gear outline -->
+      <circle cx="16" cy="16" r="13" fill="none" stroke="#CE412B" stroke-width="1.5"/>
+      <circle cx="16" cy="16" r="7"  fill="none" stroke="#CE412B" stroke-width="1.5"/>
+      <!-- Gear teeth — 8 of them -->
+      <rect x="14.5" y="1"  width="3" height="5" rx="1" fill="#CE412B" transform="rotate(0,   16, 16)"/>
+      <rect x="14.5" y="1"  width="3" height="5" rx="1" fill="#CE412B" transform="rotate(45,  16, 16)"/>
+      <rect x="14.5" y="1"  width="3" height="5" rx="1" fill="#CE412B" transform="rotate(90,  16, 16)"/>
+      <rect x="14.5" y="1"  width="3" height="5" rx="1" fill="#CE412B" transform="rotate(135, 16, 16)"/>
+      <rect x="14.5" y="1"  width="3" height="5" rx="1" fill="#CE412B" transform="rotate(180, 16, 16)"/>
+      <rect x="14.5" y="1"  width="3" height="5" rx="1" fill="#CE412B" transform="rotate(225, 16, 16)"/>
+      <rect x="14.5" y="1"  width="3" height="5" rx="1" fill="#CE412B" transform="rotate(270, 16, 16)"/>
+      <rect x="14.5" y="1"  width="3" height="5" rx="1" fill="#CE412B" transform="rotate(315, 16, 16)"/>
+    </g>
+
+    <!-- ── BORDER ───────────────────────────────────────────────────────────── -->
+    <rect
+      x="1" y="1" width="898" height="278" rx="15"
+      fill="none"
+      stroke="#FF5722"
+      stroke-width="1.2"
+      opacity="0.22"
+    />
+    <!-- Inner bevel -->
+    <rect
+      x="3" y="3" width="894" height="274" rx="13"
+      fill="none"
+      stroke="#FFFFFF"
+      stroke-width="0.5"
+      opacity="0.04"
+    />
+
+  </g>
+</svg>

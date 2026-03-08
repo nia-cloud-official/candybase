@@ -1,0 +1,45 @@
+[package]
+name = "candybase"
+version = "0.1.0"
+edition = "2021"
+authors = ["Milton Vafana <miltonhyndrex@gmail.com"]
+description = "A procedural database access library for Rust — as simple as PHP's mysqli_* functions, with Rust's safety."
+documentation = "https://docs.rs/candybase"
+homepage = "https://github.com/nia-cloud-official/candybase"
+repository = "https://github.com/nia-cloud-official/candybase"
+readme = "README.md"
+license = "MIT"
+keywords = ["database", "mysql", "postgres", "sqlite", "procedural"]
+categories = ["database", "api-bindings"]
+
+[features]
+default = ["sqlite"]
+mysql    = ["dep:mysql"]
+postgres = ["dep:postgres"]
+sqlite   = ["dep:rusqlite"]
+all      = ["mysql", "postgres", "sqlite"]
+
+[dependencies]
+mysql    = { version = "25",  optional = true }
+postgres = { version = "0.19", optional = true }
+rusqlite = { version = "0.31", features = ["bundled"], optional = true }
+thiserror = "1"
+url = "2"
+
+[package.metadata.docs.rs]
+features = ["all"]
+
+[dev-dependencies]
+# Integration tests spin up real databases; see tests/README for setup.
+
+[[example]]
+name = "sqlite_demo"
+required-features = ["sqlite"]
+
+[[example]]
+name = "mysql_demo"
+required-features = ["mysql"]
+
+[[example]]
+name = "postgres_demo"
+required-features = ["postgres"]

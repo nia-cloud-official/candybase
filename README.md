@@ -1,4 +1,4 @@
-# 🍬 Candybase — Procedural Database Access for Rust
+# Candybase — Procedural Database Access for Rust
 
 [![Crates.io](https://img.shields.io/crates/v/candybase.svg)](https://crates.io/crates/candybase)
 [![Docs.rs](https://docs.rs/candybase/badge.svg)](https://docs.rs/candybase)
@@ -6,11 +6,6 @@
 
 > **As simple as PHP's `mysqli_*` functions. As safe as Rust.**
 
-<center>
-<img src="./candy_banner.svg"/>
-</center>
-
----
 
 ## The Idea 
 
